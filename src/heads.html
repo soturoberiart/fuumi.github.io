@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Custom Gallery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0d001c] text-white font-sans">
+  <div class="text-center py-8 bg-[#1a0033]">
+    <!-- Replaceable Image -->
+    <img src="your-logo.png" alt="Custom Logo" class="mx-auto w-48 h-auto" />
+    <!-- Button -->
+    <a href="#collection" class="mt-4 inline-block bg-yellow-400 text-black font-bold py-2 px-6 rounded shadow-lg hover:bg-yellow-300 transition">
+      VIEW THE COLLECTION
+    </a>
+  </div>
+
+  <!-- Description -->
+  <div class="max-w-3xl mx-auto text-center p-6 space-y-4">
+    <p class="uppercase font-bold">A castle full of magic, adventures, witches and wizards.</p>
+    <p>An evil wizard is attacking everyone! Someone needs to be a hero — but who?</p>
+  </div>
+
+  <!-- Characters -->
+  <div id="collection" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6 max-w-6xl mx-auto">
+    <!-- CHARACTER CARD TEMPLATE -->
+    <div class="bg-[#1e002e] p-4 rounded-lg text-center">
+      <img src="leopold.png" alt="Leopold" class="w-full h-40 object-cover mb-4" />
+        </div>
+    
+    <!-- Copy and paste the div above for more characters -->
+  </div>
+
+  <footer class="text-center py-6 text-sm text-gray-400">
+    © Your Website Name
+  </footer>
+</body>
+</html>
