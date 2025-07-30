@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Third Page - Character Info</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0d001c] text-white font-sans">
+
+  <!-- Header Section -->
+  <div class="text-center py-8 bg-[#1a0033]">
+    <img src="your-logo.png" alt="Custom Logo" class="mx-auto w-48 h-auto" />
+    <a href="index.html" class="mt-4 inline-block bg-yellow-400 text-black font-bold py-2 px-6 rounded shadow-lg hover:bg-yellow-300 transition">
+      ← BACK TO HOME
+    </a>
+  </div>
+
+  <!-- Page Description -->
+  <div class="max-w-3xl mx-auto text-center p-6 space-y-4">
+    <p class="uppercase font-bold">Explore magical heroes and their NPC companions.</p>
+    <p>Each card reveals key info about the character and their closest guide or rival.</p>
+  </div>
+
+  <!-- Character Card Grid -->
+  <div class="flex flex-wrap justify-center gap-8 p-6 max-w-6xl mx-auto">
+
+    <!-- Template Card -->
+    <div class="bg-[#1e002e] rounded-lg p-4 max-w-xs shadow-lg">
+      
+      <!-- Top Image (Header Photo) -->
+      <div class="w-full aspect-[5/3] bg-gray-800 rounded mb-4 overflow-hidden">
+        <img src="images/hero1-header.png" alt="Header Image" class="w-full h-full object-cover" />
+      </div>
+
+      <!-- Title -->
+      <h2 class="text-xl font-bold mb-2">Elarin the Flame</h2>
+
+      <!-- Description -->
+      <p class="text-sm text-gray-300 mb-4">
+        A brave sorceress who mastered fire at the young age of 9. She now defends the flame citadel with everything she has.
+      </p>
+
+      <!-- NPC Sub-Template -->
+      <div class="bg-[#2a0044] p-3 rounded-lg border border-yellow-500">
+        <div class="flex items-center gap-3 mb-2">
+          <img src="images/npc1.png" alt="NPC Logo" class="w-10 h-10 rounded-full object-cover border border-yellow-400" />
+          <h3 class="font-bold text-md">NPC: Ashen Wolf</h3>
+        </div>
+        <p class="text-xs text-gray-300">
+          A loyal beast guardian of Elarin who speaks in riddles and hunts only at dusk.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Repeat Template Below for More Cards -->
+    <!-- Just duplicate the whole <div class="bg-[#1e002e] ..."> block -->
+    
+  </div>
+
+  <footer class="text-center py-6 text-sm text-gray-400">
+    © Your Website Name
+  </footer>
+
+</body>
+</html>
