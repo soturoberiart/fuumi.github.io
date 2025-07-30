@@ -2,121 +2,148 @@
 <html lang="en">
   <head>
     <title>Gani Previewer</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
-      
       * {
         box-sizing: border-box;
-        /* touch-action: none; */
+        margin: 0;
+        padding: 0;
       }
 
       body {
-        font-family: Arial, Helvetica, sans-serif;
-        /* touch-action: none; */
+        font-family: 'Quicksand', sans-serif;
+        background-color: #1c0b2b;
+        color: #eee;
+        padding: 20px;
+      }
+
+      header {
+        padding: 20px;
+        text-align: center;
+        font-size: 36px;
+        color: #e2b6ff;
+      }
+
+      section {
+        max-width: 900px;
+        margin: auto;
+        background-color: #2b1140;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.4);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      article, nav {
+        flex: 1 1 300px;
+        background-color: #3a1b57;
+        border-radius: 12px;
+        padding: 15px;
       }
 
       canvas {
-        touch-action: none;
-      }
-      
-      header {
-        padding: 30px;
-        text-align: center;
-        font-size: 35px;
-        color: purple;
+        background: #000;
+        display: block;
+        margin: 10px 0;
+        border: 2px solid #ae72e7;
+        border-radius: 8px;
       }
 
-      nav {
-        float: left;
-        width: auto;
-        padding: 10px;
+      select, input[type="file"], input[type="checkbox"], label {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 14px;
+        margin: 5px 0;
+      }
+
+      select, input[type="file"] {
+        background-color: #512370;
+        color: #fff;
+        border: none;
+        padding: 8px;
+        border-radius: 6px;
+        margin-right: 8px;
+      }
+
+      select:focus, input[type="file"]:focus {
+        outline: 2px solid #ae72e7;
       }
 
       nav ul {
         list-style-type: none;
-        padding: 0;
+        padding-left: 0;
       }
 
-      article {
-        float: left;
-        padding: 10px;
+      nav li {
+        margin-bottom: 8px;
       }
-      
-      section {
-        max-width: 800px;
-        margin: auto;
-      }
-      
-      section:after {
-        content: "";
-        display: table;
-        clear: both;
+
+      label {
+        margin-left: 4px;
       }
 
       footer {
-        padding: 10px;
         text-align: center;
-        color: #1a0033;
+        padding: 10px;
+        margin-top: 20px;
+        color: #b58edc;
+        font-size: 14px;
       }
 
       @media (max-width: 600px) {
-        nav, article {
-          width: 100%;
-          height: auto;
+        section {
+          flex-direction: column;
         }
       }
     </style>
   </head>
 
   <body>
+    <header>Gani Previewer</header>
 
     <section>
-
       <article>
         <input type="file" id="upload" name="upload" accept=".gif,.png,.gani"><br>
         <canvas id="canvas" width="400" height="400"></canvas>
-        
-        <br><select name="animations" id="animations" onchange='onAnimationChanged(this)'>
-        </select> 
-        Direction: <select name="directions" id="directions" onchange='onDirectionChanged(this)'>
+        <br>
+        <select name="animations" id="animations" onchange='onAnimationChanged(this)'></select>
+        Direction:
+        <select name="directions" id="directions" onchange='onDirectionChanged(this)'>
           <option value="0">Up</option>
           <option value="1">Left</option>
           <option value="2">Down</option>
           <option value="3">Right</option>
-        </select> 
-        Zoom: <select name="zoom" id="zoom" onchange='onZoomChange(this)'>
+        </select>
+        Zoom:
+        <select name="zoom" id="zoom" onchange='onZoomChange(this)'>
           <option value="1">1x</option>
           <option value="2">2x</option>
           <option value="3">3x</option>
           <option value="4">4x</option>
-        </select> 
-        
+        </select>
       </article>
-      
+
       <nav>
         <ul>
-          <li><input type="checkbox" id="vis_head"      name="vis_head"      value="HEAD"   checked onchange='onToggleVisibility(this)'> <label for="vis_head">Head</label></li>
-          <li><input type="checkbox" id="vis_hat"       name="vis_hat"       value="ATTR1"  checked onchange='onToggleVisibility(this)'> <label for="vis_hat">Hat</label></li>
-          <li><input type="checkbox" id="vis_accessory" name="vis_accessory" value="ATTR4"  checked onchange='onToggleVisibility(this)'> <label for="vis_accessory">Accessory</label></li>
-          <li><input type="checkbox" id="vis_body"      name="vis_body"      value="BODY"   checked onchange='onToggleVisibility(this)'> <label for="vis_body">Body</label></li>
-          <li><input type="checkbox" id="vis_shield"    name="vis_shield"    value="SHIELD" checked onchange='onToggleVisibility(this)'> <label for="vis_shield">Shield</label></li>
-          <li><input type="checkbox" id="vis_sword"     name="vis_sword"     value="SWORD"  checked onchange='onToggleVisibility(this)'> <label for="vis_sword">Sword</label></li>
-          <li><input type="checkbox" id="vis_horse"     name="vis_horse"     value="HORSE"  checked onchange='onToggleVisibility(this)'> <label for="vis_horse">Horse</label></li>
-          <li><input type="checkbox" id="vis_param"     name="vis_param"     value="PARAM1" checked onchange='onToggleVisibility(this)'> <label for="vis_param">Param</label></li>
+          <li><input type="checkbox" id="vis_head" value="HEAD" checked onchange='onToggleVisibility(this)'> <label for="vis_head">Head</label></li>
+          <li><input type="checkbox" id="vis_hat" value="ATTR1" checked onchange='onToggleVisibility(this)'> <label for="vis_hat">Hat</label></li>
+          <li><input type="checkbox" id="vis_accessory" value="ATTR4" checked onchange='onToggleVisibility(this)'> <label for="vis_accessory">Accessory</label></li>
+          <li><input type="checkbox" id="vis_body" value="BODY" checked onchange='onToggleVisibility(this)'> <label for="vis_body">Body</label></li>
+          <li><input type="checkbox" id="vis_shield" value="SHIELD" checked onchange='onToggleVisibility(this)'> <label for="vis_shield">Shield</label></li>
+          <li><input type="checkbox" id="vis_sword" value="SWORD" checked onchange='onToggleVisibility(this)'> <label for="vis_sword">Sword</label></li>
+          <li><input type="checkbox" id="vis_horse" value="HORSE" checked onchange='onToggleVisibility(this)'> <label for="vis_horse">Horse</label></li>
+          <li><input type="checkbox" id="vis_param" value="PARAM1" checked onchange='onToggleVisibility(this)'> <label for="vis_param">Param</label></li>
         </ul>
       </nav>
-
     </section>
 
-    <footer>
-    </footer>
+    <footer>© Tuumi Galleria - Gani Previewer</footer>
 
     <script type="text/javascript" src="defaultGanis.js?random=203"></script>
     <script type="text/javascript" src="main.js?random=203"></script>
-        
   </body>
-
 </html>
