@@ -3,79 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Upload & Preview</title>
+  <title>Upload Viewer</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    :root {
-      --card-bg: #1e002e;
-      --highlight-bg: #2a0044;
-      --highlight-border: #facc15;
-    }
-  </style>
 </head>
 <body class="bg-[#0d001c] text-white font-sans">
 
-  <!-- Header Section -->
-  <div class="text-center py-8 bg-[#1a0033]">
-    <img src="../images/your-logo.png" alt="Custom Logo" class="mx-auto w-48 h-auto" />
-    <a href="../index.html" class="mt-4 inline-block bg-yellow-400 text-black font-bold py-2 px-6 rounded shadow-lg hover:bg-yellow-300 transition">
+  <!-- Header -->
+  <div class="text-center py-6 bg-[#1a0033]">
+    <img src="../images/your-logo.png" class="mx-auto w-40" />
+    <a href="../index.html" class="mt-4 inline-block bg-yellow-400 text-black font-bold py-2 px-6 rounded hover:bg-yellow-300">
       ← BACK TO HOME
     </a>
   </div>
 
-  <!-- Description -->
-  <div class="max-w-3xl mx-auto text-center p-6 space-y-4">
-    <p class="uppercase font-bold">Upload your image and preview it</p>
-    <p>Choose a file and see it displayed in the styled card below.</p>
-  </div>
+  <!-- Upload UI -->
+  <div class="max-w-xl mx-auto mt-10 p-6 bg-[#1e002e] rounded-xl shadow-xl">
+    <h2 class="text-center text-xl font-bold mb-4">Upload & Customize View</h2>
 
-  <!-- Upload & Preview Card -->
-  <div class="max-w-md mx-auto p-6">
-    <input id="fileInput" type="file" accept="image/*" class="block w-full mb-4 text-gray-200 bg-[#1a0033] p-2 rounded" />
-    
-    <div class="bg-[var(--card-bg)] p-4 rounded-lg shadow-lg">
-      <!-- Preview Container -->
-      <div id="preview" class="bg-[var(--highlight-bg)] border border-[var(--highlight-border)] p-4 rounded-lg flex flex-col items-center">
-        <div id="imgSlot" class="w-full aspect-video bg-gray-800 rounded mb-4 overflow-hidden">
-          <!-- uploaded image goes here -->
-          <img id="uploadedImg" src="" alt="Preview" class="hidden w-full h-full object-cover" />
-        </div>
-        <h2 id="title" class="text-xl font-bold mb-2">Your Uploaded Image</h2>
-        <p id="desc" class="text-sm text-gray-300 mb-4">Image preview will appear above after you choose a file.</p>
-        <div class="flex items-center gap-3">
-          <img id="npcImg" src="" alt="NPC Icon" class="hidden w-10 h-10 rounded-full border border-yellow-400 object-cover" />
-          <h3 id="npcName" class="hidden font-bold text-md">NPC Name</h3>
-        </div>
-        <p id="npcDesc" class="hidden text-xs text-gray-300 mt-2">NPC description goes here.</p>
+    <div class="space-y-4">
+      <div>
+        <label class="block font-semibold">1. Upload Character Image:</label>
+        <input id="characterInput" type="file" accept="image/*" class="w-full bg-[#2a003a] p-2 rounded" />
+      </div>
+
+      <div>
+        <label class="block font-semibold">2. Upload Background Image:</label>
+        <input id="bgInput" type="file" accept="image/*" class="w-full bg-[#2a003a] p-2 rounded" />
       </div>
     </div>
+
+    <!-- Preview Area -->
+    <div class="relative mt-6 w-full aspect-square bg-gray-900 border-2 border-yellow-400 rounded-lg overflow-hidden">
+      <img id="bgPreview" class="absolute w-full h-full object-cover" />
+      <img id="characterPreview" class="absolute w-full h-full object-contain" />
+    </div>
+
+    <!-- Caption -->
+    <p class="text-center mt-3 text-sm text-gray-400">Layered preview of your upload with custom background</p>
   </div>
 
-<script>
-  document.getElementById('fileInput').addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      const img = document.getElementById('uploadedImg');
-      img.src = reader.result;
-      img.classList.remove('hidden');
-      document.getElementById('title').textContent = file.name;
-      document.getElementById('desc').textContent = 'This is your uploaded image preview.';
-      // demo NPC sub-template (optional)
-      document.getElementById('npcImg').src = reader.result;
-      document.getElementById('npcImg').classList.remove('hidden');
-      document.getElementById('npcName').textContent = 'Preview Icon';
-      document.getElementById('npcName').classList.remove('hidden');
-      document.getElementById('npcDesc').textContent = 'This NPC preview mirrors your image';
-      document.getElementById('npcDesc').classList.remove('hidden');
-    };
-    reader.readAsDataURL(file);
-  });
-</script>
+  <script>
+    const characterInput = document.getElementById('characterInput');
+    const bgInput = document.getElementById('bgInput');
+    const charPreview = document.getElementById('characterPreview');
+    const bgPreview = document.getElementById('bgPreview');
 
-  <footer class="text-center py-6 text-sm text-gray-400">
-    © Your Website Name
-  </footer>
+    characterInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          charPreview.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    bgInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          bgPreview.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+
 </body>
 </html>
