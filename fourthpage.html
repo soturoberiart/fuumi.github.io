@@ -109,7 +109,7 @@
     <section>
       <article>
         <input type="file" id="upload" name="upload" accept=".gif,.png,.gani"><br>
-        <img id="preview-image" src="images/pic.png" width="400" height="400" style="background-color: #1c0b2b; border: 2px solid #ae72e7; border-radius: 8px;" />
+        <canvas id="canvas" width="400" height="400" style="background-color: #1c0b2b; border: 2px solid #ae72e7; border-radius: 8px;"></canvas>
         <br>
         <select name="animations" id="animations" onchange='onAnimationChanged(this)'></select>
         Direction:
@@ -146,17 +146,6 @@
 
     <script type="text/javascript" src="defaultGanis.js?random=203"></script>
     <script type="text/javascript" src="main.js?random=203"></script>
-    <script>
-  document.getElementById('upload').addEventListener('change', function (e) {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = function (event) {
-      document.getElementById('preview-image').src = event.target.result;
-    };
-    reader.readAsDataURL(file);
-  });
-    </script>
+    
   </body>
 </html>
