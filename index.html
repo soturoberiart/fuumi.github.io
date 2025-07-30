@@ -1,118 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fuumi's GFX Gallery</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      :root {
-        --primary: #b08adb;
-      }
-    </style>
-  </head>
-  <body class="bg-gray-100 text-gray-900">
-    <div class="flex min-h-screen">
-      <!-- Sidebar -->
-      <aside class="w-64 bg-[var(--primary)] text-white p-6">
-        <h1 class="text-2xl font-bold mb-8">📷 Fuumi</h1>
-        <ul class="space-y-4">
-          <li><a href="#heads" class="hover:underline">Heads</a></li>
-          <li><a href="#boies" class="hover:underline">Bodies</a></li>    
-          <li><a href="#previewer" class="hover:underline">Previewer</a></li>
-          <li><a href="#looting-guide" class="hover:underline">Looting Guide</a></li>
-          <li><a href="#socials" class="hover:underline">Socials</a></li>
-        </ul>
-      </aside>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Custom Gallery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0d001c] text-white font-sans">
+  <div class="text-center py-8 bg-[#1a0033]">
+    <!-- Replaceable Image -->
+    <img src="your-logo.png" alt="Custom Logo" class="mx-auto w-48 h-auto" />
+    <!-- Button -->
+    <a href="#collection" class="mt-4 inline-block bg-yellow-400 text-black font-bold py-2 px-6 rounded shadow-lg hover:bg-yellow-300 transition">
+      VIEW THE COLLECTION
+    </a>
+  </div>
 
-      <!-- Main Content -->
-      <main class="flex-1 p-8 overflow-auto">
-        <section id="Heads" class="mb-12">
-          <h2 class="text-2xl font-semibold text-[var(--primary)] mb-4">Heads</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <img src="https://source.unsplash.com/400x300/?wallpaper" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?background" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            
-          </div>
-        </section>
+  <!-- Description -->
+  <div class="max-w-3xl mx-auto text-center p-6 space-y-4">
+    <p class="uppercase font-bold">A castle full of magic, adventures, witches and wizards.</p>
+    <p>An evil wizard is attacking everyone! Someone needs to be a hero — but who?</p>
+  </div>
 
-        <section id="Bodies" class="mb-12">
-          <h2 class="text-2xl font-semibold text-[var(--primary)] mb-4">Bodies</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <img src="https://source.unsplash.com/400x300/?nature" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?forest" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?mountain" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            
-          </div>
-        </section>
-
-        <section id="Previewer" class="mb-12">
-          <h2 class="text-2xl font-semibold text-[var(--primary)] mb-4">Previewer</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <img src="https://source.unsplash.com/400x300/?city" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?street" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?buildings" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            
-          </div>
-        </section>
-                <section id="Looting Guide" class="mb-12">
-          <h2 class="text-2xl font-semibold text-[var(--primary)] mb-4">Looting Guide</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <img src="https://source.unsplash.com/400x300/?city" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?street" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?buildings" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            
-          </div>
-        </section>
-        
-                <section id="Socials" class="mb-12">
-          <h2 class="text-2xl font-semibold text-[var(--primary)] mb-4">Socials</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <img src="https://source.unsplash.com/400x300/?city" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?street" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?buildings" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-            <img src="https://source.unsplash.com/400x300/?pattern" class="rounded shadow" />
-          </div>
-        </section>
-        
-      </main>
+  <!-- Characters -->
+  <div id="collection" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6 max-w-6xl mx-auto">
+    <!-- CHARACTER CARD TEMPLATE -->
+    <div class="bg-[#1e002e] p-4 rounded-lg text-center">
+      <img src="leopold.png" alt="Leopold" class="w-full h-40 object-cover mb-4" />
+      <h2 class="font-bold text-lg">LEOPOLD THE OLD</h2>
+      <a href="#" class="mt-2 inline-block bg-yellow-400 text-black font-bold py-1 px-4 rounded hover:bg-yellow-300 transition">VIEW PAGE</a>
+      <p class="mt-2 text-sm">A beacon of wisdom. Sadly, can't cook or make a sandwich.</p>
     </div>
-  </body>
+    
+    <!-- Copy and paste the div above for more characters -->
+  </div>
+
+  <footer class="text-center py-6 text-sm text-gray-400">
+    © Your Website Name
+  </footer>
+</body>
 </html>
