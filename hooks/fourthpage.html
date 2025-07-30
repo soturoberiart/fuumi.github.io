@@ -1,99 +1,85 @@
 <!DOCTYPE html><html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Character Viewer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      body {
-        font-family: 'Segoe UI', sans-serif;
-        background-color: #1a1a2e;
-        color: #f0e130;
-      }
-      .card {
-        background-color: #222244;
-        border-radius: 1rem;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-        padding: 1rem;
-        margin-top: 1rem;
-      }
-      .section-title {
-        font-weight: bold;
-        font-size: 1.25rem;
-        margin-top: 1.5rem;
-      }
-    </style>
-  </head>
-  <body class="p-6">
-    <header class="text-center mb-6">
-      <h1 class="text-3xl font-bold">Character Viewer</h1>
-      <p class="text-lg text-gray-300">Upload and preview your sprite setup</p>
-    </header><div class="card max-w-md mx-auto">
-  <div class="mb-4">
-    <label class="block mb-2 font-bold text-white">Choose File</label>
-    <input type="file" id="imageUpload" class="w-full" />
-  </div>
-
-  <div class="w-full h-80 flex items-center justify-center bg-cover bg-center border border-yellow-300" id="previewWrapper" style="background-image: url('images/yourbg.png');">
-    <img id="preview" class="max-h-full max-w-full object-contain" />
-  </div>
-
-  <div class="grid grid-cols-2 gap-4 mt-4">
-    <div>
-      <label class="block text-white">Gani</label>
-      <select class="w-full mt-1 p-2 rounded" id="gani">
-        <option>default.gani</option>
-        <option>idle.gani</option>
-        <option>walk.gani</option>
-      </select>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sprite Viewer - Fuumi GFX</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    canvas {
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+<body class="bg-[#1a1a1a] text-white font-sans">
+  <header class="bg-[#111] py-4 shadow-md">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Fuumi GFX Viewer</h1>
+      <a href="../index.html" class="text-sm bg-violet-700 px-3 py-1 rounded hover:bg-violet-800">Back to Homepage</a>
     </div>
-    <div>
-      <label class="block text-white">Direction</label>
-      <select class="w-full mt-1 p-2 rounded" id="direction">
-        <option>Up</option>
-        <option selected>Down</option>
-        <option>Left</option>
-        <option>Right</option>
-      </select>
+  </header>  <main class="container mx-auto px-4 py-8">
+    <div class="mb-4">
+      <label class="block text-sm font-bold mb-2">Choose File</label>
+      <input type="file" id="imageInput" accept="image/*" class="bg-gray-800 text-white px-4 py-2 rounded" />
     </div>
-    <div>
-      <label class="block text-white">Zoom</label>
-      <select class="w-full mt-1 p-2 rounded" id="zoom">
-        <option>1x</option>
-        <option>2x</option>
-        <option>3x</option>
-      </select>
+    <div class="mb-4">
+      <label class="block text-sm font-bold mb-2">Background Image</label>
+      <input type="file" id="bgInput" accept="image/*" class="bg-gray-800 text-white px-4 py-2 rounded" />
     </div>
-  </div>
-
-  <div class="section-title">Layers</div>
-  <div class="grid grid-cols-2 gap-2 text-white">
-    <label><input type="checkbox" checked /> Head</label>
-    <label><input type="checkbox" checked /> Hat</label>
-    <label><input type="checkbox" /> Accessory</label>
-    <label><input type="checkbox" checked /> Body</label>
-    <label><input type="checkbox" /> Shield</label>
-    <label><input type="checkbox" checked /> Sword</label>
-    <label><input type="checkbox" checked /> Horse</label>
-    <label><input type="checkbox" checked /> Param</label>
-  </div>
+    <div class="mb-4">
+      <canvas id="canvas" width="64" height="64" class="border mx-auto"></canvas>
+    </div><div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-md mx-auto">
+  <label><input type="checkbox" checked class="layer-toggle" data-layer="head" /> Head</label>
+  <label><input type="checkbox" checked class="layer-toggle" data-layer="hat" /> Hat</label>
+  <label><input type="checkbox" class="layer-toggle" data-layer="accessory" /> Accessory</label>
+  <label><input type="checkbox" checked class="layer-toggle" data-layer="body" /> Body</label>
+  <label><input type="checkbox" class="layer-toggle" data-layer="shield" /> Shield</label>
+  <label><input type="checkbox" checked class="layer-toggle" data-layer="sword" /> Sword</label>
+  <label><input type="checkbox" checked class="layer-toggle" data-layer="horse" /> Horse</label>
+  <label><input type="checkbox" checked class="layer-toggle" data-layer="param" /> Param</label>
 </div>
 
-<script>
-  const upload = document.getElementById("imageUpload");
-  const preview = document.getElementById("preview");
+  </main>  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let spriteImg = new Image();
+    let bgImg = new Image();
 
-  upload.addEventListener("change", function () {
-    const file = this.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        preview.setAttribute("src", e.target.result);
-      };
-      reader.readAsDataURL(file);
+    document.getElementById('imageInput').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          spriteImg.src = reader.result;
+          spriteImg.onload = () => draw();
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    document.getElementById('bgInput').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          bgImg.src = reader.result;
+          bgImg.onload = () => draw();
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (bgImg.src) ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height);
+      if (spriteImg.src) ctx.drawImage(spriteImg, 0, 0);
     }
-  });
-</script>
 
-  </body>
+    document.querySelectorAll('.layer-toggle').forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        // You can assign layer logic here if separating by sprites
+        draw();
+      });
+    });
+  </script></body>
 </html>
