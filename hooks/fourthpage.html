@@ -1,75 +1,99 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Upload Viewer</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-[#0d001c] text-white font-sans">
-
-  <!-- Header -->
-  <div class="text-center py-6 bg-[#1a0033]">
-    <img src="../images/Galleria. png" class="mx-auto w-40" />
-    <a href="../index.html" class="mt-4 inline-block bg-yellow-400 text-black font-bold py-2 px-6 rounded hover:bg-yellow-300">
-      ← BACK TO HOME
-    </a>
+<!DOCTYPE html><html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Character Viewer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #1a1a2e;
+        color: #f0e130;
+      }
+      .card {
+        background-color: #222244;
+        border-radius: 1rem;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        padding: 1rem;
+        margin-top: 1rem;
+      }
+      .section-title {
+        font-weight: bold;
+        font-size: 1.25rem;
+        margin-top: 1.5rem;
+      }
+    </style>
+  </head>
+  <body class="p-6">
+    <header class="text-center mb-6">
+      <h1 class="text-3xl font-bold">Character Viewer</h1>
+      <p class="text-lg text-gray-300">Upload and preview your sprite setup</p>
+    </header><div class="card max-w-md mx-auto">
+  <div class="mb-4">
+    <label class="block mb-2 font-bold text-white">Choose File</label>
+    <input type="file" id="imageUpload" class="w-full" />
   </div>
 
-  <!-- Upload UI -->
-  <div class="max-w-xl mx-auto mt-10 p-6 bg-[#1e002e] rounded-xl shadow-xl">
-    <h2 class="text-center text-xl font-bold mb-4">Upload & Customize View</h2>
-
-    <div class="space-y-4">
-      <div>
-        <label class="block font-semibold">1. Upload Character Image:</label>
-        <input id="characterInput" type="file" accept="image/*" class="w-full bg-[#2a003a] p-2 rounded" />
-      </div>
-
-      <div>
-        <label class="block font-semibold">2. Upload Background Image:</label>
-        <input id="bgInput" type="file" accept="image/*" class="w-full bg-[#2a003a] p-2 rounded" />
-      </div>
-    </div>
-
-    <!-- Preview Area -->
-    <div class="relative mt-6 w-full aspect-square bg-gray-900 border-2 border-yellow-400 rounded-lg overflow-hidden">
-      <img id="bgPreview" class="absolute w-full h-full object-cover" />
-      <img id="characterPreview" class="absolute w-full h-full object-contain" />
-    </div>
-
-    <!-- Caption -->
-    <p class="text-center mt-3 text-sm text-gray-400">Layered preview of your upload with custom background</p>
+  <div class="w-full h-80 flex items-center justify-center bg-cover bg-center border border-yellow-300" id="previewWrapper" style="background-image: url('images/yourbg.png');">
+    <img id="preview" class="max-h-full max-w-full object-contain" />
   </div>
 
-  <script>
-    const characterInput = document.getElementById('characterInput');
-    const bgInput = document.getElementById('bgInput');
-    const charPreview = document.getElementById('characterPreview');
-    const bgPreview = document.getElementById('bgPreview');
+  <div class="grid grid-cols-2 gap-4 mt-4">
+    <div>
+      <label class="block text-white">Gani</label>
+      <select class="w-full mt-1 p-2 rounded" id="gani">
+        <option>default.gani</option>
+        <option>idle.gani</option>
+        <option>walk.gani</option>
+      </select>
+    </div>
+    <div>
+      <label class="block text-white">Direction</label>
+      <select class="w-full mt-1 p-2 rounded" id="direction">
+        <option>Up</option>
+        <option selected>Down</option>
+        <option>Left</option>
+        <option>Right</option>
+      </select>
+    </div>
+    <div>
+      <label class="block text-white">Zoom</label>
+      <select class="w-full mt-1 p-2 rounded" id="zoom">
+        <option>1x</option>
+        <option>2x</option>
+        <option>3x</option>
+      </select>
+    </div>
+  </div>
 
-    characterInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          charPreview.src = reader.result;
-        };
-        reader.readAsDataURL(file);
-      }
-    });
+  <div class="section-title">Layers</div>
+  <div class="grid grid-cols-2 gap-2 text-white">
+    <label><input type="checkbox" checked /> Head</label>
+    <label><input type="checkbox" checked /> Hat</label>
+    <label><input type="checkbox" /> Accessory</label>
+    <label><input type="checkbox" checked /> Body</label>
+    <label><input type="checkbox" /> Shield</label>
+    <label><input type="checkbox" checked /> Sword</label>
+    <label><input type="checkbox" checked /> Horse</label>
+    <label><input type="checkbox" checked /> Param</label>
+  </div>
+</div>
 
-    bgInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          bgPreview.src = reader.result;
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-  </script>
+<script>
+  const upload = document.getElementById("imageUpload");
+  const preview = document.getElementById("preview");
 
-</body>
+  upload.addEventListener("change", function () {
+    const file = this.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        preview.setAttribute("src", e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
+
+  </body>
 </html>
