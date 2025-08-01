@@ -6,13 +6,10 @@
   <title>Loot Buyer Guide</title>
   <link rel="icon" href="../images/favicon.png" type="image/png">
   <script src="https://cdn.tailwindcss.com"></script>
-
   <style>
     @font-face {
       font-family: 'Jersey 10';
       src: url('../images/Jersey10-Regular.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
     }
 
     .jersey-font {
@@ -43,40 +40,35 @@
     <p>This is a direct guide to where you can sell your loot from loot diving.</p>
   </section>
 
-  <!-- Cards Section -->
-  <section class="flex flex-wrap justify-center gap-8 p-6 max-w-6xl mx-auto">
+  <!-- Card Section -->
+  <section class="flex justify-center p-6">
+    <div class="relative w-[500px] aspect-[5/3] bg-[#1e002e] rounded-xl shadow-lg p-4 flex flex-col justify-between">
 
-    <!-- Character Card -->
-    <div class="bg-[#1e002e] rounded-xl shadow-lg max-w-xs w-full p-4">
-      
-      <!-- 5:3 Aspect Ratio Image -->
-      <div class="relative w-full aspect-[5/3] overflow-hidden rounded-lg mb-4 bg-gray-700">
-        <img src="../images/cave.png" alt="Elster's Cave" class="absolute w-full h-full object-cover inset-0" />
+      <!-- Top Image (optional) -->
+      <div class="relative w-full aspect-[5/3] overflow-hidden rounded-md mb-2">
+        <img src="../images/cave.png" alt="Elster's Cave" class="absolute w-full h-full object-cover" />
       </div>
 
-      <!-- Title -->
-      <h2 class="text-xl font-bold mb-2">Elster's Cave</h2>
-
-      <!-- Description -->
-      <p class="text-sm text-gray-300 mb-4">
-        Located left of Sardon’s Tower. Elster is a messy hoarder who buys all loot — either all at once or one by one — but pays lower than others.
-      </p>
-
-      <!-- NPC Info -->
-      <div class="bg-[#2a0044] p-3 rounded-lg border border-purple-500">
-        <div class="flex items-center gap-3 mb-2">
-          <img src="../images/els.png" alt="Elster Icon" class="w-10 h-10 rounded-full object-cover border border-purple-400" />
-          <h3 class="font-bold text-md">NPC: Elster the Hoarder</h3>
-        </div>
-        <p class="text-xs text-gray-300">
-          <b>Items Bought:</b> All loot items<br>
-          <b>Price:</b> Low fixed rate (e.g. Cracked Shield = 13g, Gold Doubloon = 50g)
+      <!-- Card Content -->
+      <div class="text-sm space-y-2 overflow-y-auto">
+        <h2 class="text-xl font-bold">Elster's Cave</h2>
+        <p class="text-gray-300">
+          Located left of Sardon’s Tower. Elster is a messy hoarder who buys all loot — either all at once or one by one — but pays lower than others.
         </p>
+
+        <!-- NPC Info -->
+        <div class="bg-[#2a0044] p-3 rounded-lg border border-purple-500">
+          <div class="flex items-center gap-3 mb-2">
+            <img src="../images/els.png" alt="Elster Icon" class="w-10 h-10 rounded-full object-cover border border-purple-400" />
+            <h3 class="font-bold text-md">NPC: Elster the Hoarder</h3>
+          </div>
+          <p class="text-xs text-gray-300">
+            <b>Items Bought:</b> All loot items<br>
+            <b>Price:</b> Low fixed rate (e.g. Cracked Shield = 13g, Gold Doubloon = 50g)
+          </p>
+        </div>
       </div>
     </div>
-
-    <!-- Add more character cards below as needed -->
-
   </section>
 
   <!-- Footer -->
