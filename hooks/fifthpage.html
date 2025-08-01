@@ -17,56 +17,20 @@
     }
 
     .header-bg {
-      background-image: url('images/header-bg.png');
+      background-image: url('../images/header-bg.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
     }
 
-    /* Character Grid Styles */
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background-image: url('images/test 3/background.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    .container {
-      position: relative;
+    iframe {
       width: 100%;
       height: 100%;
-    }
-
-    .character-wrapper {
-      position: absolute;
-      width: 64px;
-      height: 64px;
-    }
-
-    .character {
-      width: 64px;
-      height: 64px;
-      z-index: 2;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    .shadow {
-      width: 64px;
-      height: 32px;
-      position: absolute;
-      top: 48px;
-      left: 0;
-      opacity: 0.5;
-      z-index: 1;
+      border: none;
+      border-radius: 12px;
     }
   </style>
 </head>
-
 <body class="bg-[#0d001c] text-white jersey-font">
 
   <!-- Header -->
@@ -83,83 +47,10 @@
     <p>This is a direct guide to where you can sell your loot from loot diving.</p>
   </section>
 
-  <!-- Card Section with Character Grid -->
+  <!-- Card Section: Load another HTML file -->
   <section class="flex justify-center p-6">
-    <div class="relative w-[800px] aspect-[16/10] bg-[#1e002e] rounded-xl shadow-xl p-6 flex flex-col justify-between overflow-hidden">
-
-      <!-- Character Grid Script Area -->
-      <div class="relative w-full h-full">
-        <div class="container">
-          <script>
-            const container = document.currentScript.parentElement;
-            const rows = [9, 10, 11, 12, 13, 14, 15, 16]; // 100 characters
-            const charWidth = 36;
-            const rowHeight = 44;
-            const charSize = 64;
-            const startTop = 5;
-
-            let characterCount = 1;
-
-            rows.forEach((charsInRow, rowIndex) => {
-              const rowTop = `${startTop + rowIndex * 5}%`;
-              const totalRowWidth = charsInRow * charWidth;
-              const screenCenter = container.offsetWidth / 2;
-              const rowStartLeft = screenCenter - (totalRowWidth / 2);
-
-              for (let i = 0; i < charsInRow; i++) {
-                if (characterCount > 100) break;
-
-                const leftPx = rowStartLeft + i * charWidth;
-                const wrapper = document.createElement('div');
-                wrapper.className = 'character-wrapper';
-                wrapper.style.top = rowTop;
-                wrapper.style.left = `${leftPx}px`;
-
-                const characterImg = new Image();
-                characterImg.className = 'character';
-
-                const pngSrc = `images/character${characterCount}.png`;
-                const gifSrc = `images/character${characterCount}.gif`;
-
-                characterImg.src = gifSrc;
-                characterImg.onerror = () => {
-                  characterImg.src = pngSrc;
-                };
-
-                const shadowImg = new Image();
-                shadowImg.className = 'shadow';
-                shadowImg.src = 'images/shadow.png';
-
-                wrapper.appendChild(characterImg);
-                wrapper.appendChild(shadowImg);
-                container.appendChild(wrapper);
-
-                characterCount++;
-              }
-            });
-          </script>
-        </div>
-      </div>
-
-      <!-- Text Content -->
-      <div class="text-sm space-y-4 overflow-y-auto mt-4">
-        <h2 class="text-2xl font-bold">Elster's Cave</h2>
-        <p class="text-gray-300 text-base">
-          Located just left of Sardon's Tower, Elster is a messy hoarder. He buys all loot — either in bulk or individually — but pays less than others.
-        </p>
-
-        <!-- NPC Info -->
-        <div class="bg-[#2a0044] p-4 rounded-lg border border-purple-500">
-          <div class="flex items-center gap-4 mb-3">
-            <img src="../images/els.png" alt="Elster Icon" class="w-12 h-12 rounded-full object-cover border border-purple-400" />
-            <h3 class="font-bold text-lg">NPC: Elster the Hoarder</h3>
-          </div>
-          <p class="text-sm text-gray-300">
-            <b>Items Bought:</b> All loot items<br>
-            <b>Price:</b> Low fixed rate (e.g. Cracked Shield = 13g, Gold Doubloon = 50g)
-          </p>
-        </div>
-      </div>
+    <div class="relative w-[800px] aspect-[16/10] bg-[#1e002e] rounded-xl shadow-xl p-6 overflow-hidden">
+      <iframe src="../res/character-grid.html"></iframe>
     </div>
   </section>
 
@@ -167,5 +58,6 @@
   <footer class="text-center py-6 text-sm text-gray-400">
     © Fuumi Galleria
   </footer>
+
 </body>
 </html>
