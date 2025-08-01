@@ -10,7 +10,7 @@
       padding: 0;
       height: 100%;
       overflow: hidden;
-      background-image: url('image/background.png');
+      background-image: url('/image/background.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -79,8 +79,8 @@
           const characterImg = new Image();
           characterImg.className = 'character';
 
-          const pngSrc = `../../image/character${characterCount}.png`;
-          const gifSrc = `../../image/character${characterCount}.gif`;
+          const pngSrc = `/image/character${characterCount}.png`;
+          const gifSrc = `/image/character${characterCount}.gif`;
 
           // Try gif first
           characterImg.src = gifSrc;
