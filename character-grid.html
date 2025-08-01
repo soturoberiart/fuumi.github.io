@@ -37,15 +37,6 @@
       left: 0;
     }
 
-    .shadow {
-      width: 64px;
-      height: 32px;
-      position: absolute;
-      top: 48px;
-      left: 0;
-      opacity: 0.5;
-      z-index: 1;
-    }
   </style>
 </head>
 <body>
@@ -88,12 +79,7 @@
             characterImg.src = pngSrc;
           };
 
-          const shadowImg = new Image();
-          shadowImg.className = 'shadow';
-          shadowImg.src = 'image/shadow.png';
-
           wrapper.appendChild(characterImg);
-          wrapper.appendChild(shadowImg);
           container.appendChild(wrapper);
 
           characterCount++;
