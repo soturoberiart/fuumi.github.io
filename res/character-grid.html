@@ -10,7 +10,7 @@
       padding: 0;
       height: 100%;
       overflow: hidden;
-      background-image: url('images/test 3/background.png');
+      background-image: url('image/background.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -79,8 +79,8 @@
           const characterImg = new Image();
           characterImg.className = 'character';
 
-          const pngSrc = `images/character${characterCount}.png`;
-          const gifSrc = `images/character${characterCount}.gif`;
+          const pngSrc = `image/character${characterCount}.png`;
+          const gifSrc = `image/character${characterCount}.gif`;
 
           // Try gif first
           characterImg.src = gifSrc;
@@ -90,7 +90,7 @@
 
           const shadowImg = new Image();
           shadowImg.className = 'shadow';
-          shadowImg.src = 'images/shadow.png';
+          shadowImg.src = 'image/shadow.png';
 
           wrapper.appendChild(characterImg);
           wrapper.appendChild(shadowImg);
