@@ -79,8 +79,8 @@
           const characterImg = new Image();
           characterImg.className = 'character';
 
-          const pngSrc = `image/character${characterCount}.png`;
-          const gifSrc = `image/character${characterCount}.gif`;
+          const pngSrc = `../image/character${characterCount}.png`;
+          const gifSrc = `../image/character${characterCount}.gif`;
 
           // Try gif first
           characterImg.src = gifSrc;
@@ -90,7 +90,7 @@
 
           const shadowImg = new Image();
           shadowImg.className = 'shadow';
-          shadowImg.src = 'image/shadow.png';
+          shadowImg.src = '../image/shadow.png';
 
           wrapper.appendChild(characterImg);
           wrapper.appendChild(shadowImg);
