@@ -3,18 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Third Page - Character Info</title>
+  <title>Loot Buyer Guide</title>
   <link rel="icon" href="../images/favicon.png" type="image/png">
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    .header-bg {
-      background-image: url('images/header-bg.png'); /* replace with your image path */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
     @font-face {
       font-family: 'Jersey 10';
       src: url('../images/Jersey10-Regular.ttf') format('truetype');
@@ -25,33 +18,40 @@
     .jersey-font {
       font-family: 'Jersey 10', sans-serif;
     }
+
+    .header-bg {
+      background-image: url('images/header-bg.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
   </style>
 </head>
 <body class="bg-[#0d001c] text-white jersey-font">
 
-  <!-- Header Section -->
-  <div class="text-center py-8 header-bg">
-    <img src="../Galleria .png" alt="Custom Logo" class="mx-auto w-48 h-auto" />
+  <!-- Header -->
+  <header class="text-center py-8 header-bg">
+    <img src="../Galleria .png" alt="Fuumi Galleria Logo" class="mx-auto w-48 h-auto" />
     <a href="../index.html" class="mt-4 inline-block bg-purple-400 text-black font-bold py-2 px-6 rounded shadow-lg hover:bg-yellow-300 transition">
       ← BACK TO HOME
     </a>
-  </div>
+  </header>
 
-  <!-- Page Introduction -->
-  <div class="max-w-3xl mx-auto text-center p-6 space-y-4">
-    <p class="uppercase font-bold">This is not an instructions page on how to loot.</p>
-    <p>This is a direct guide on where to sell the loot that you got from loot diving.</p>
-  </div>
+  <!-- Intro -->
+  <section class="max-w-3xl mx-auto text-center p-6 space-y-3">
+    <p class="uppercase font-bold">This is not a guide on how to loot.</p>
+    <p>This is a direct guide to where you can sell your loot from loot diving.</p>
+  </section>
 
-  <!-- Character Card Grid -->
-  <div class="flex flex-wrap justify-center gap-8 p-6 max-w-6xl mx-auto">
+  <!-- Cards Section -->
+  <section class="flex flex-wrap justify-center gap-8 p-6 max-w-6xl mx-auto">
 
-    <!-- Character Card - Elster -->
-    <div class="bg-[#1e002e] rounded-lg p-4 shadow-lg max-w-xs">
+    <!-- Character Card -->
+    <div class="bg-[#1e002e] rounded-xl shadow-lg max-w-xs w-full p-4">
       
-      <!-- Top Image with 5:3 Aspect Ratio -->
-      <div class="relative w-full aspect-[5/3] bg-gray-800 rounded mb-4 overflow-hidden">
-        <img src="../images/cave.png" alt="Elster's Cave" class="absolute inset-0 w-full h-full object-cover" />
+      <!-- 5:3 Aspect Ratio Image -->
+      <div class="relative w-full aspect-[5/3] overflow-hidden rounded-lg mb-4 bg-gray-700">
+        <img src="../images/cave.png" alt="Elster's Cave" class="absolute w-full h-full object-cover inset-0" />
       </div>
 
       <!-- Title -->
@@ -59,13 +59,13 @@
 
       <!-- Description -->
       <p class="text-sm text-gray-300 mb-4">
-        Elster's Cave is to the left of Sardon's Tower. Elster buys loot either all at once or per item. He accepts anything but gives lower rates.
+        Located left of Sardon’s Tower. Elster is a messy hoarder who buys all loot — either all at once or one by one — but pays lower than others.
       </p>
 
-      <!-- NPC Details -->
+      <!-- NPC Info -->
       <div class="bg-[#2a0044] p-3 rounded-lg border border-purple-500">
         <div class="flex items-center gap-3 mb-2">
-          <img src="../images/els.png" alt="Elster" class="w-10 h-10 rounded-full object-cover border border-purple-400" />
+          <img src="../images/els.png" alt="Elster Icon" class="w-10 h-10 rounded-full object-cover border border-purple-400" />
           <h3 class="font-bold text-md">NPC: Elster the Hoarder</h3>
         </div>
         <p class="text-xs text-gray-300">
@@ -75,10 +75,11 @@
       </div>
     </div>
 
-    <!-- You can copy the card above and paste more below to expand the grid -->
+    <!-- Add more character cards below as needed -->
 
-  </div>
+  </section>
 
+  <!-- Footer -->
   <footer class="text-center py-6 text-sm text-gray-400">
     © Fuumi Galleria
   </footer>
